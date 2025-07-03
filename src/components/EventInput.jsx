@@ -19,7 +19,7 @@ export default function EventInput({
         disabled={loading}
       />
       <button
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        className="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
         onClick={onConvert}
         disabled={loading || (inputText || "").trim() === ""}
       >

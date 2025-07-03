@@ -1,3 +1,6 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { coy } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 export default function EventResult({
   eventJson,
   onDownloadIcs,
@@ -7,19 +10,26 @@ export default function EventResult({
   if (!eventJson) return null;
   return (
     <section>
-      <h2 className="text-2xl font-semibold mt-8 mb-2">Parsed Event JSON</h2>
-      <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto whitespace-pre-wrap">
-        {JSON.stringify(eventJson, null, 2)}
-      </pre>
-      <div className="flex space-x-4 mt-4">
+      <h2 className="text-lg font-semibold mt-8 mb-2">Parsed Event JSON</h2>
+      <div className="bg-gray-100 rounded-md overflow-x-auto">
+        <SyntaxHighlighter
+          language="json"
+          style={coy}
+          customStyle={{ margin: 0, padding: "1rem" }}
+          showLineNumbers={false}
+        >
+          {JSON.stringify(eventJson, null, 2)}
+        </SyntaxHighlighter>
+      </div>
+      <div className="grid grid-cols-2 gap-4 mt-4">
         <button
-          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+          className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
           onClick={onDownloadIcs}
         >
           Download .ics
         </button>
         <button
-          className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+          className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
           onClick={onGoogleCal}
         >
           Add to Google Calendar
