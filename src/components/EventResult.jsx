@@ -35,19 +35,6 @@ export default function EventResult({
           Add to Google Calendar
         </button>
       </div>
-      {googleCalLink && (
-        <p className="mt-4">
-          Google Calendar link:{" "}
-          <a
-            href={googleCalLink}
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-600 underline"
-          >
-            Open Link
-          </a>
-        </p>
-      )}
     </section>
   );
 }

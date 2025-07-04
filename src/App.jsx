@@ -11,21 +11,21 @@ const API_BASE =
     ? import.meta.env.BACKEND_URL
     : "http://127.0.0.1:8000";
 
-// const testEventJson = {
-//   summary: "Boston Tech Meetup: Summer Networking",
-//   start: "2025-07-18T18:00:00-04:00",
-//   end: "2025-07-18T21:30:00-04:00",
-//   timezone: "America/New_York",
-//   location: "District Hall Boston, 75 Northern Ave, Boston, MA 02210",
-//   description:
-//     'Join local developers, founders, and tech professionals for a fun evening of networking, light snacks, and drinks. Don\'t miss our guest speaker, Sarah Lin, CEO of FutureAI, sharing insights on building products with generative AI.\n\nAgenda:\n- 6:00–6:45pm: Networking & refreshments\n- 6:45–7:30pm: Guest talk – "Building with Generative AI"\n- 7:30–9:30pm: Open mingling',
-//   organizer_name: "John Smith",
-//   organizer_email: "john.smith@example.com",
-// };
+const testEventJson = {
+  summary: "Boston Tech Meetup: Summer Networking",
+  start: "2025-07-18T18:00:00-04:00",
+  end: "2025-07-18T21:30:00-04:00",
+  timezone: "America/New_York",
+  location: "District Hall Boston, 75 Northern Ave, Boston, MA 02210",
+  description:
+    'Join local developers, founders, and tech professionals for a fun evening of networking, light snacks, and drinks. Don\'t miss our guest speaker, Sarah Lin, CEO of FutureAI, sharing insights on building products with generative AI.\n\nAgenda:\n- 6:00–6:45pm: Networking & refreshments\n- 6:45–7:30pm: Guest talk – "Building with Generative AI"\n- 7:30–9:30pm: Open mingling',
+  organizer_name: "John Smith",
+  organizer_email: "john.smith@example.com",
+};
 
 function App() {
   const [inputText, setInputText] = useState("");
-  const [eventJson, setEventJson] = useState(null);
+  const [eventJson, setEventJson] = useState(testEventJson);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [googleCalLink, setGoogleCalLink] = useState("");
@@ -81,6 +81,13 @@ function App() {
 
   async function handleGoogleCal() {
     if (!eventJson) return;
+
+    if (googleCalLink) {
+      // If link is already fetched, just open it
+      window.open(googleCalLink, "_blank");
+      return;
+    }
+
     try {
       const res = await axios.post(
         `${API_BASE}/convert/google_calendar`,
@@ -96,7 +103,7 @@ function App() {
   }
 
   return (
-    <main className="max-w-xl mx-auto mt-8 font-sans p-4">
+    <main className="max-w-3xl mx-auto mt-8 font-sans p-4">
       <header className="text-center">
         <h1 className="text-3xl font-bold mb-1">text2isc</h1>
         <p className="text-gray-700 text-base mb-4">
