@@ -6,8 +6,15 @@ import EventInput from "./components/EventInput";
 import EventResult from "./components/EventResult";
 import ErrorMessage from "./components/ErrorMessage";
 
-const API_BASE = import.meta.env.PRODUCTION
-  ? import.meta.env.BACKEND_URL
+const isProd = import.meta.env.VITE_PRODUCTION === "true";
+
+const API_BASE = isProd
+  ? (() => {
+      if (!import.meta.env.VITE_BACKEND_URL) {
+        throw new Error("VITE_BACKEND_URL must be set in production");
+      }
+      return import.meta.env.VITE_BACKEND_URL;
+    })()
   : "http://127.0.0.1:8000";
 
 /*
