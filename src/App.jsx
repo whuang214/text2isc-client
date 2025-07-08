@@ -6,10 +6,9 @@ import EventInput from "./components/EventInput";
 import EventResult from "./components/EventResult";
 import ErrorMessage from "./components/ErrorMessage";
 
-const API_BASE =
-  import.meta.env.PRODUCTION && import.meta.env.BACKEND_URL
-    ? import.meta.env.BACKEND_URL
-    : "http://127.0.0.1:8000";
+const API_BASE = import.meta.env.PRODUCTION
+  ? import.meta.env.BACKEND_URL
+  : "http://127.0.0.1:8000";
 
 /*
 const testEventJson = {
