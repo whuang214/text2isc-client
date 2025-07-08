@@ -1,6 +1,6 @@
 # text2isc-client
 
-[Here](https://github.com/whuang214/text2isc-client) is the link to the deployed app.
+[Here](https://text2isc.vercel.app/) is the link to the deployed app.
 
 This is the React frontend for **text2isc**, a simple web app that converts natural language event announcements into calendar events.
 
