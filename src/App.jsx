@@ -17,6 +17,11 @@ const API_BASE = isProd
     })()
   : "http://127.0.0.1:8000";
 
+// print out all env
+console.log("VITE_BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
+console.log("VITE_PRODUCTION:", import.meta.env.VITE_PRODUCTION);
+console.log("API_BASE:", API_BASE);
+
 /*
 const testEventJson = {
   summary: "Boston Tech Meetup: Summer Networking",
